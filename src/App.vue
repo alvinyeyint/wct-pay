@@ -1,4 +1,5 @@
 <script setup>
+import { onMounted } from "vue";
 import Header from "./components/Header.vue";
 import Hero from "./components/Hero.vue";
 import Features from "./components/Features.vue";
@@ -9,6 +10,10 @@ import CryptoPayment from "./components/CryptoPayment.vue";
 import Merchant from "./components/Merchant.vue";
 import Contact from "./components/Contact.vue";
 import Footer from "./components/Footer.vue";
+
+onMounted(() => {
+  document.title = "Wct | Pay";
+});
 </script>
 
 <template>
