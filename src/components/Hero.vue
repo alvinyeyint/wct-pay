@@ -67,7 +67,7 @@
         </div>
       </div>
     </transition>
-    <transition name="slide-up">
+    <transition name="slide-up-second">
       <div
         v-if="isPopupVisible"
         class="absolute left-5 md:left-44 bottom-10 md:bottom-32 lg:left-96 bg-gradient-to-r rounded-xl from-amber-100 to-primary-200 bg-opacity-80 p-4 shadow-lg"
@@ -145,11 +145,18 @@ function togglePopup() {
 } */
 
 .slide-up-enter-active,
-.slide-up-leave-active {
+.slide-up-leave-active,
+.slide-up-second-leave-active {
   transition: all 0.3s ease-in-out;
 }
+
+.slide-up-second-enter-active {
+  transition: all 0.8s ease-in-out;
+}
 .slide-up-enter-from,
-.slide-up-leave-to {
+.slide-up-leave-to,
+.slide-up-second-enter-from,
+.slide-up-second-leave-to {
   transform: translateY(100%);
   opacity: 0;
 }
