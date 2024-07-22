@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .text-subtitle {
+    @apply text-[40px] text-gray-800 font-semibold;
+  }
+}
