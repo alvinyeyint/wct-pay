@@ -9,7 +9,7 @@
             <span class="text-primary-600">Compliant</span> Crypto Payment
             Solutions
           </h1>
-          <p class="mt-4 text-xl text-gray-800">
+          <p class="mt-3 text-xl text-gray-800">
             Regulated and compliant to give you peace-of-mind.
           </p>
         </div>
@@ -18,15 +18,15 @@
             <span class="text-primary-600">Secure</span> Crypto Payment
             Solutions
           </h1>
-          <p class="mt-4 text-xl text-gray-800">
+          <p class="mt-3 text-xl text-gray-800">
             Advanced encryption meets the immutability of blockchain.
           </p>
         </div>
       </div>
       <div class="mt-8 flex justify-center space-x-4">
-        <Button>Get Started</Button>
+        <Button class="px-5 py-3 text-white">Get Started</Button>
         <Button
-          class="bg-white ml-4 text-black hover:text-white hover:bg-primary-600"
+          class="bg-white ml-4 text-black hover:text-white px-5 py-3 hover:bg-primary-600"
           >Contact Us</Button
         >
       </div>

@@ -13,13 +13,13 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center">
         <h2 class="text-subtitle">What are the Benefits of Crypto Payments?</h2>
-        <p class="text-gray-800 mt-3">
+        <p class="text-gray-600 mt-3 text-xl leading-[30px]">
           Whether you are a payment service provider, or a merchant, accepting
           crypto <br />
           payments unlocks a wide range of benefits.
         </p>
       </div>
-      <div class="mt-10 grid grid-cols-6 gap-6">
+      <div class="mt-16 grid grid-cols-6 gap-8">
         <div
           v-for="benefit in benefits"
           class="col-span-6 md:col-span-3 lg:col-span-2"

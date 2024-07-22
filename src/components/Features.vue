@@ -17,7 +17,7 @@
         <h2 class="text-subtitle text-white font-extrabold">
           Why Choose WCT Pay?
         </h2>
-        <p class="mt-5 text-lg">
+        <p class="mt-5 text-xl text-gray-50">
           Founded in 2008 and managed by leading payments, finance, tech and
           blockchain professionals, <br />
           WCT Pay’s crypto payment platform seamlessly integrates via API and

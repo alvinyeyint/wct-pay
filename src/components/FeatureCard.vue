@@ -5,8 +5,10 @@
     <div class="-mt-14">
       <img :src="props.img" alt="Expertise" class="size-18 mx-auto" />
     </div>
-    <h3 class="mt-4 text-xl font-semibold">{{ props.title }}</h3>
-    <p class="mt-2 text-base">
+    <h3 class="mt-4 text-xl font-semibold leading-9">
+      {{ props.title }}
+    </h3>
+    <p class="mt-2 text-base leading-6">
       {{ props.content }}
     </p>
   </div>

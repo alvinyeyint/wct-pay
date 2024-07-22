@@ -6,13 +6,20 @@
       </div>
       <div class="col-span-6 md:col-span-3 flex flex-col justify-center">
         <div>
-          <h3 class="text-subtitle">
+          <h3 class="text-subtitle leading-[44px] tracking-normal">
             Enabling Merchants with <br />
             <span class="text-primary-600"
               >Seamless Crypto Payment <br />
               Solutions</span
             >
           </h3>
+          <p class="text-xl mt-6 leading-[30px] text-gray-500">
+            At <span class="text-primary-600">WCT Pay</span>, we offer merchants
+            a comprehensive suite of services designed to streamline and
+            simplify the process of accepting cryptocurrency payments. Our
+            solutions include the tools, technology and support, as well as
+            compliance with financial and payments industry regulations.
+          </p>
           <div class="flex gap-4 items-start mt-8">
             <img
               src="../assets/icon/check-icon.svg"
@@ -21,7 +28,7 @@
             />
             <div>
               <p class="text-gray-500 font-bold">Accepting Crypto Payments</p>
-              <p class="text-gray-500 mt-2">
+              <p class="text-gray-500 mt-1 leading-6">
                 WCT Pay’s crypto payment solutions enable merchants to easily
                 accept cryptocurrency payments from customers around the world.
                 Our platform supports a wide range of digital currencies, giving

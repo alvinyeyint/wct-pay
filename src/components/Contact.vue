@@ -59,7 +59,7 @@
             <div class="sm:col-span-2">
               <button
                 type="submit"
-                class="w-full inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700"
+                class="w-full inline-flex justify-center py-3 px-5 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700"
               >
                 Submit
               </button>
@@ -75,11 +75,3 @@
     </div>
   </section>
 </template>
-
-<script>
-export default {
-  name: "Contact",
-};
-</script>
-
-<style scoped></style>

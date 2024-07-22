@@ -19,7 +19,7 @@
         </div>
         <div class="col-span-6 md:col-span-3 flex flex-col justify-center">
           <div>
-            <h3 class="text-subtitle text-white">
+            <h3 class="text-subtitle text-gray-50 leading-[44px]">
               Transforming Businesses with <br />
               Seamless
               <span class="text-primary-200">
@@ -29,7 +29,7 @@
             </h3>
 
             <div class="mt-6">
-              <p class="text-white mt-2 text-xl">
+              <p class="text-gray-50 mt-2 text-xl">
                 At <span class="text-primary-200">WCT Pay</span>, we’re proud to
                 offer corporations and businesses a seamless and user-friendly
                 payments platform for the authorisation, clearing and settlement

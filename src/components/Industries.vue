@@ -19,7 +19,7 @@
           of industries.
         </p>
       </div>
-      <div class="mt-10">
+      <div class="mt-14">
         <vue-marquee-slider id="marquee-slider" :speed="25000" :space="100">
           <div class="" v-for="(service, index) in services" :key="index">
             <IndustryCard :img="service.img" :content="service.content" />
@@ -51,6 +51,10 @@ import platform from "../assets/icon/platform.svg";
 import insurance from "../assets/icon/insurance.svg";
 import aviation from "../assets/icon/aviation.svg";
 import yacht from "../assets/icon/yacht.svg";
+import gaming from "../assets/icon/gaming.svg";
+import sportBetting from "../assets/icon/sport-betting.svg";
+import parcel from "../assets/icon/parcel.svg";
+import house from "../assets/icon/house.svg";
 
 const services = [
   {
@@ -78,16 +82,20 @@ const services = [
     content: "Yachting Industry",
   },
   {
-    img: yacht,
+    img: gaming,
     content: "Gaming platform",
   },
   {
-    img: yacht,
+    img: sportBetting,
     content: "Sports Betting",
   },
   {
-    img: yacht,
+    img: parcel,
     content: "Luxuary Retailers",
+  },
+  {
+    img: house,
+    content: "Real Estate Developers",
   },
 ];
 </script>
