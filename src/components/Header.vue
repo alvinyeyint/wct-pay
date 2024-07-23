@@ -7,7 +7,12 @@
       <div class="flex justify-between h-16">
         <div class="flex items-center gap-8 h-full">
           <div class="flex-shrink-0 flex items-center">
-            <img class="h-8 w-auto" src="../assets/wct-pay.svg" alt="Logo" />
+            <img
+              class="h-8 w-auto cursor-pointer"
+              src="../assets/wct-pay.svg"
+              alt="Logo"
+              @click="refreshPage"
+            />
           </div>
           <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
             <a
@@ -111,6 +116,10 @@ const headerClass = computed(() => {
     "bg-white shadow-md": isScrolled.value,
   };
 });
+
+const refreshPage = () => {
+  window.location.reload();
+};
 
 function toggleMenu() {
   isMenuOpen.value = !isMenuOpen.value;

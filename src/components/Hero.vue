@@ -6,7 +6,9 @@
       <div>
         <h1 class="text-[54px] font-semibold text-primary-600">
           <span ref="typedRef" class="text-primary-600 inline-block"> </span>
-          <span class="text-gray-900">Crypto Payment Solutions</span>
+          <span v-show="currentIndex > 0" class="text-gray-900"
+            >Crypto Payment Solutions</span
+          >
         </h1>
         <p v-if="isTextOne" class="mt-3 text-xl text-gray-800">
           Regulated and compliant to give you peace-of-mind.
@@ -34,25 +36,16 @@
     <transition name="slide-up">
       <div
         v-if="isPopupVisible"
-        class="absolute bottom-40 md:bottom-60 left-5 md:left-36 lg:left-80 bg-gradient-to-r rounded-xl from-amber-100 to-primary-200 bg-opacity-80 p-4 shadow-lg"
+        class="absolute bottom-40 md:bottom-60 left-5 md:left-36 lg:left-80 bg-gradient-to-r rounded-xl from-amber-100 to-primary-200 bg-opacity-80 p-4 shadow-lg max-w-[400px]"
       >
-        <div v-if="isTextOne" class="flex items-start gap-4">
-          <img src="@src/assets/icon/check-icon-2.svg" alt="" />
+        <div class="flex items-start gap-4">
+          <img :src="texts[currentIndex].blockTwo.icon" alt="" />
           <div>
-            <p class="text-gray-800">Committed to Compliance</p>
-            <p class="text-sm text-gray-600 mt-2">
-              Fully licensed and compliant in multiple <br />
-              jurisdictions.
+            <p class="text-gray-800">
+              {{ texts[currentIndex].blockOne.title }}
             </p>
-          </div>
-          <img src="@src/assets/icon/check-fill.svg" alt="" />
-        </div>
-        <div v-else class="flex items-start gap-4">
-          <img src="@src/assets/icon/lock.svg" alt="" />
-          <div>
-            <p class="text-gray-800">Zero Fraud Risk</p>
             <p class="text-sm text-gray-600 mt-2">
-              Remove the risk of fraud and chargebacks.
+              {{ texts[currentIndex].blockOne.content }}
             </p>
           </div>
           <img src="@src/assets/icon/check-fill.svg" alt="" />
@@ -62,26 +55,16 @@
     <transition name="slide-up-second">
       <div
         v-if="isPopupVisible"
-        class="absolute left-5 md:left-44 bottom-10 md:bottom-32 lg:left-96 bg-gradient-to-r rounded-xl from-amber-100 to-primary-200 bg-opacity-80 p-4 shadow-lg"
+        class="absolute left-5 md:left-44 bottom-10 md:bottom-32 lg:left-96 bg-gradient-to-r rounded-xl from-amber-100 to-primary-200 bg-opacity-80 p-4 shadow-lg max-w-[400px]"
       >
-        <div v-if="isTextOne" class="flex items-start gap-4">
-          <img src="@src/assets/icon/user.svg" alt="" />
+        <div class="flex items-start gap-4">
+          <img :src="texts[currentIndex].blockTwo.icon" alt="" />
           <div>
-            <p class="text-gray-800">Stringent Onboarding</p>
-            <p class="text-sm text-gray-600 mt-2">
-              Compliant with all KYC, KYB, AML and PEP <br />
-              regulations.
+            <p class="text-gray-800">
+              {{ texts[currentIndex].blockTwo.title }}
             </p>
-          </div>
-          <img src="@src/assets/icon/check-fill.svg" alt="" />
-        </div>
-        <div v-else class="flex items-start gap-4">
-          <img src="@src/assets/icon/block-chain.svg" alt="" />
-          <div>
-            <p class="text-gray-800">Blockchain Immutability</p>
             <p class="text-sm text-gray-600 mt-2">
-              Secure, transparent, and tamper-proof <br />
-              payments.
+              {{ texts[currentIndex].blockTwo.content }}
             </p>
           </div>
           <img src="@src/assets/icon/check-fill.svg" alt="" />
@@ -109,17 +92,137 @@
 import { ref, onMounted, onUnmounted } from "vue";
 import Button from "./Button.vue";
 import Typed from "typed.js";
+import User from "@src/assets/icon/user.svg";
+import BlockChain from "@src/assets/icon/block-chain.svg";
+import CheckFill from "@src/assets/icon/check-fill.svg";
 
-const isTextOne = ref(true);
+const currentIndex = ref(0);
 const isPopupVisible = ref(true);
 const typedRef = ref(null);
 const typed = ref(null);
+let intervalId = null;
+const texts = [
+  {
+    title: "Crypto Payment Solutions",
+    subTitle: "Unlock a global market of 562 million crypto users.",
+    blockOne: {
+      icon: User,
+      title: "Borderless Transactions",
+      content: "Accept payments without geographical restrictions.",
+    },
+    blockTwo: {
+      icon: BlockChain,
+      title: "Future Proofing",
+      content: "Start transacting in the currency of the future today.",
+    },
+  },
+  {
+    title: "Secure",
+    subTitle: "Advanced encryption meets the immutability of blockchain.",
+    blockOne: {
+      icon: User,
+      title: "Zero Fraud Risk",
+      content: "Remove the risk of fraud and chargebacks.",
+    },
+    blockTwo: {
+      icon: BlockChain,
+      title: "Blockchain Immutability",
+      content: "Secure, transparent, and tamper-proof payments.",
+    },
+  },
+  {
+    title: "Compliant",
+    subTitle: "Regulated and compliant to give you peace-of-mind.",
+    blockOne: {
+      icon: User,
+      title: "Committed to Compliance",
+      content: "Fully licensed and compliant in multiple jurisdictions.",
+    },
+    blockTwo: {
+      icon: BlockChain,
+      title: "Stringent Onboarding",
+      content: "Compliant with all KYC, KYB, AML and CFT regulations.",
+    },
+  },
+  {
+    title: "Fast",
+    subTitle: "Lightning-fast settlement of all payments",
+    blockOne: {
+      icon: User,
+      title: "Fast Settlement",
+      content: "Enjoy faster settlements and payouts, reducing waiting times.",
+    },
+    blockTwo: {
+      icon: BlockChain,
+      title: "Vanquish Volatility",
+      content: "No exposure to cryptocurrency market volatility.",
+    },
+  },
+
+  {
+    title: "Cost-Effective ",
+    subTitle: "Low fees allow you to maximize your returns.",
+    blockOne: {
+      icon: User,
+      title: "Lower Transaction Fees",
+      content:
+        "Benefit from competitive transaction fees and eliminate fraudulent chargebacks.",
+    },
+    blockTwo: {
+      icon: BlockChain,
+      title: "Increased Profits",
+      content: "Raise revenues with lower fees and access to a new market.",
+    },
+  },
+  {
+    title: "Customizable",
+    subTitle: "Tailor-made payment solutions to suit your business needs.",
+    blockOne: {
+      icon: User,
+      title: "Full-Service Platform",
+      content: "Manage your payments via our web-based platform",
+    },
+    blockTwo: {
+      icon: BlockChain,
+      title: "Tailored Tech",
+      content: "Customizable data feeds with the ability to white label.",
+    },
+  },
+  {
+    title: "Unparalleled ",
+    subTitle: "White-glove service from a dedicated account manager.",
+    blockOne: {
+      icon: User,
+      title: "Personalized Service",
+      content: "Enjoy the benefits of a dedicated, personal account manager.",
+    },
+    blockTwo: {
+      icon: BlockChain,
+      title: "24/7 Support",
+      content: "Never miss a payment with 24/7 omnichannel tech support.",
+    },
+  },
+  {
+    title: "Seamless ",
+    subTitle: "Seamless and cost-free tech integration and support.",
+    blockOne: {
+      icon: User,
+      title: "Free Set Up",
+      content:
+        "Accept crypto payments without the cost of developing or licensing.",
+    },
+    blockTwo: {
+      icon: BlockChain,
+      title: "Seamless Integration",
+      content: "API-based, plug-and-play solution to minimize admin and time.",
+    },
+  },
+];
 const currentText = ref("Compliant");
 
 function toggleText() {
-  isTextOne.value = !isTextOne.value;
-
-  currentText.value = isTextOne.value ? "Compliant" : "Secure";
+  currentIndex.value = (currentIndex.value + 1) % texts.length;
+  currentText.value = texts[currentIndex.value].title;
 
   if (typed.value && typed.value.constructor === Typed) {
     typed.value.destroy();
@@ -127,11 +230,12 @@ function toggleText() {
   typed.value = new Typed(typedRef.value, {
     strings: [currentText.value],
     typeSpeed: 150,
+    backSpeed: 150,
     onComplete: (self) => {
-      let cursor = document.querySelector(".typed-cursor");
-      setTimeout(function () {
-        cursor.style.opacity = 0;
-      }, 1000);
+      // let cursor = document.querySelector(".typed-cursor");
+      // setTimeout(function () {
+      //   cursor.style.opacity = 0;
+      // }, 1000);
     },
   });
 
@@ -147,15 +251,17 @@ function togglePopup() {
 
 onMounted(() => {
   typed.value = new Typed(typedRef.value, {
-    strings: ["Compliant"],
-    typeSpeed: 150,
+    strings: [texts[currentIndex.value].title],
+    typeSpeed: 100,
     onComplete: (self) => {
-      let cursor = document.querySelector(".typed-cursor");
-      setTimeout(function () {
-        cursor.style.opacity = 0;
-      }, 1000);
+      // let cursor = document.querySelector(".typed-cursor");
+      // setTimeout(function () {
+      //   cursor.style.opacity = 0;
+      // }, 1000);
     },
   });
+
+  intervalId = setInterval(toggleText, 5000);
 });
 
 onUnmounted(() => {
