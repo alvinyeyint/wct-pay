@@ -4,24 +4,16 @@
   >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <div>
-        <div v-if="isTextOne">
-          <h1 class="text-[54px] font-semibold text-gray-900">
-            <span class="text-primary-600">Compliant</span> Crypto Payment
-            Solutions
-          </h1>
-          <p class="mt-3 text-xl text-gray-800">
-            Regulated and compliant to give you peace-of-mind.
-          </p>
-        </div>
-        <div v-else>
-          <h1 class="text-[54px] font-semibold text-gray-900">
-            <span class="text-primary-600">Secure</span> Crypto Payment
-            Solutions
-          </h1>
-          <p class="mt-3 text-xl text-gray-800">
-            Advanced encryption meets the immutability of blockchain.
-          </p>
-        </div>
+        <h1 class="text-[54px] font-semibold text-primary-600">
+          <span ref="typedRef" class="text-primary-600 inline-block"> </span>
+          <span class="text-gray-900">Crypto Payment Solutions</span>
+        </h1>
+        <p v-if="isTextOne" class="mt-3 text-xl text-gray-800">
+          Regulated and compliant to give you peace-of-mind.
+        </p>
+        <p v-else class="mt-3 text-xl text-gray-800">
+          Advanced encryption meets the immutability of blockchain.
+        </p>
       </div>
       <div class="mt-8 flex justify-center space-x-4">
         <Button class="px-5 py-3 text-white">Get Started</Button>
@@ -114,14 +106,35 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 import Button from "./Button.vue";
+import Typed from "typed.js";
 
 const isTextOne = ref(true);
 const isPopupVisible = ref(true);
+const typedRef = ref(null);
+const typed = ref(null);
+const currentText = ref("Compliant");
 
 function toggleText() {
   isTextOne.value = !isTextOne.value;
+
+  currentText.value = isTextOne.value ? "Compliant" : "Secure";
+
+  if (typed.value && typed.value.constructor === Typed) {
+    typed.value.destroy();
+  }
+  typed.value = new Typed(typedRef.value, {
+    strings: [currentText.value],
+    typeSpeed: 150,
+    onComplete: (self) => {
+      let cursor = document.querySelector(".typed-cursor");
+      setTimeout(function () {
+        cursor.style.opacity = 0;
+      }, 1000);
+    },
+  });
+
   togglePopup();
   setTimeout(() => {
     if (!isPopupVisible.value) togglePopup();
@@ -131,6 +144,25 @@ function toggleText() {
 function togglePopup() {
   isPopupVisible.value = !isPopupVisible.value;
 }
+
+onMounted(() => {
+  typed.value = new Typed(typedRef.value, {
+    strings: ["Compliant"],
+    typeSpeed: 150,
+    onComplete: (self) => {
+      let cursor = document.querySelector(".typed-cursor");
+      setTimeout(function () {
+        cursor.style.opacity = 0;
+      }, 1000);
+    },
+  });
+});
+
+onUnmounted(() => {
+  if (typed.value && typed.value.constructor === Typed) {
+    typed.value.destroy();
+  }
+});
 </script>
 
 <style scoped>
