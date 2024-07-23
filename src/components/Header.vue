@@ -43,7 +43,7 @@
         <div class="hidden sm:flex items-center">
           <div class="flex-shrink-0">
             <Button
-              class="text-black mr-3 bg-transparent hover:text-white hover:bg-primary-600"
+              class="text-black mr-3 bg-transparent shadow-none hover:text-white hover:bg-primary-600"
             >
               Sign In
             </Button>
