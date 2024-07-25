@@ -40,11 +40,11 @@
       <div class="flex flex-col gap-4 md:flex-row justify-between">
         <p>&copy; 2024 WCT Pay. All rights reserved.</p>
         <div class="space-x-4 text-primary-400">
-          <span>Terms of conditions</span>
+          <router-link to="/terms">Terms of conditions</router-link>
           <span> | </span>
-          <span>Privacy Policy</span>
+          <router-link to="/privacy-policy">Privacy Policy</router-link>
           <span> | </span>
-          <span>Cookies Notice</span>
+          <router-link to="cookie-notice">Cookies Notice</router-link>
           <span> | </span>
           <span>Modern Slavery Statement</span>
         </div>

@@ -10,11 +10,8 @@
             >Crypto Payment Solutions</span
           >
         </h1>
-        <p v-if="isTextOne" class="mt-3 text-xl text-gray-800">
-          Regulated and compliant to give you peace-of-mind.
-        </p>
-        <p v-else class="mt-3 text-xl text-gray-800">
-          Advanced encryption meets the immutability of blockchain.
+        <p class="mt-3 text-xl text-gray-800">
+          {{ texts[currentIndex].subTitle }}
         </p>
       </div>
       <div class="mt-8 flex justify-center space-x-4">

@@ -75,7 +75,11 @@
 
 <script setup>
 import { computed, ref, onMounted, onUnmounted } from "vue";
+import { useRouter } from "vue-router";
 import Button from "./Button.vue";
+
+const router = useRouter();
+
 const menuLinks = [
   {
     name: "Home",
@@ -118,7 +122,9 @@ const headerClass = computed(() => {
 });
 
 const refreshPage = () => {
-  window.location.reload();
+  // window.location.reload();
+  console.log("here");
+  router.push({ path: "/" });
 };
 
 function toggleMenu() {
@@ -137,5 +143,3 @@ onUnmounted(() => {
   window.removeEventListener("scroll", handleScroll);
 });
 </script>
-
-<style scoped></style>

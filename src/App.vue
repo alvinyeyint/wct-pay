@@ -1,14 +1,6 @@
 <script setup>
 import { onMounted } from "vue";
 import Header from "./components/Header.vue";
-import Hero from "./components/Hero.vue";
-import Features from "./components/Features.vue";
-import Industries from "./components/Industries.vue";
-import Benefits from "./components/Benefits.vue";
-import TransformingBusiness from "./components/TransformingBusiness.vue";
-import CryptoPayment from "./components/CryptoPayment.vue";
-import Merchant from "./components/Merchant.vue";
-import Contact from "./components/Contact.vue";
 import Footer from "./components/Footer.vue";
 
 onMounted(() => {
@@ -19,24 +11,9 @@ onMounted(() => {
 <template>
   <Header />
 
-  <Hero />
-
-  <CryptoPayment />
-
-  <Features />
-
-  <Merchant />
-
-  <Industries />
-
-  <Benefits />
-
-  <TransformingBusiness />
-
-  <Contact />
+  <router-view />
 
   <Footer />
-  <!-- <HelloWorld msg="Vite + Vue" /> -->
 </template>
 
 <style scoped>
