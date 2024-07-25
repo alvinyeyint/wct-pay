@@ -1,8 +1,8 @@
 <template>
   <section
-    class="bg-gradient-to-b from-primary-200 pt-20 pb-12 relative overflow-hidden"
+    class="bg-gradient-to-b from-primary-200 pt-20 pb-12 overflow-hidden"
   >
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
       <div>
         <h1 class="text-[54px] font-semibold text-primary-600">
           <span ref="typedRef" class="text-primary-600 inline-block"> </span>
@@ -18,6 +18,7 @@
         <Button class="px-5 py-3 text-white">Get Started</Button>
         <Button
           class="bg-white ml-4 text-black hover:text-white px-5 py-3 hover:bg-primary-600"
+          @click="scrollToContactUs"
           >Contact Us</Button
         >
       </div>
@@ -28,46 +29,46 @@
           class="w-full max-w-4xl mx-auto"
         />
       </div>
-    </div>
 
-    <transition name="slide-up">
-      <div
-        v-if="isPopupVisible"
-        class="absolute bottom-40 md:bottom-60 left-5 md:left-36 lg:left-80 bg-gradient-to-r rounded-xl from-amber-100 to-primary-200 bg-opacity-80 p-4 shadow-lg max-w-[400px]"
-      >
-        <div class="flex items-start gap-4">
-          <img :src="texts[currentIndex].blockTwo.icon" alt="" />
-          <div>
-            <p class="text-gray-800">
-              {{ texts[currentIndex].blockOne.title }}
-            </p>
-            <p class="text-sm text-gray-600 mt-2">
-              {{ texts[currentIndex].blockOne.content }}
-            </p>
+      <transition name="slide-up">
+        <div
+          v-if="isPopupVisible"
+          class="absolute text-left bottom-40 md:bottom-60 left-5 md:left-24 lg:left-64 bg-gradient-to-r rounded-xl from-amber-100 to-primary-200 bg-opacity-80 p-4 shadow-lg max-w-[400px]"
+        >
+          <div class="flex items-start gap-4">
+            <img :src="texts[currentIndex].blockTwo.icon" alt="" />
+            <div>
+              <p class="text-gray-800">
+                {{ texts[currentIndex].blockOne.title }}
+              </p>
+              <p class="text-sm text-gray-600 mt-2">
+                {{ texts[currentIndex].blockOne.content }}
+              </p>
+            </div>
+            <img src="@src/assets/icon/check-fill.svg" alt="" />
           </div>
-          <img src="@src/assets/icon/check-fill.svg" alt="" />
         </div>
-      </div>
-    </transition>
-    <transition name="slide-up-second">
-      <div
-        v-if="isPopupVisible"
-        class="absolute left-5 md:left-44 bottom-10 md:bottom-32 lg:left-96 bg-gradient-to-r rounded-xl from-amber-100 to-primary-200 bg-opacity-80 p-4 shadow-lg max-w-[400px]"
-      >
-        <div class="flex items-start gap-4">
-          <img :src="texts[currentIndex].blockTwo.icon" alt="" />
-          <div>
-            <p class="text-gray-800">
-              {{ texts[currentIndex].blockTwo.title }}
-            </p>
-            <p class="text-sm text-gray-600 mt-2">
-              {{ texts[currentIndex].blockTwo.content }}
-            </p>
+      </transition>
+      <transition name="slide-up-second">
+        <div
+          v-if="isPopupVisible"
+          class="absolute text-left left-5 md:left-32 bottom-10 md:bottom-32 lg:left-72 bg-gradient-to-r rounded-xl from-amber-100 to-primary-200 bg-opacity-80 p-4 shadow-lg max-w-[400px]"
+        >
+          <div class="flex items-start gap-4">
+            <img :src="texts[currentIndex].blockTwo.icon" alt="" />
+            <div>
+              <p class="text-gray-800">
+                {{ texts[currentIndex].blockTwo.title }}
+              </p>
+              <p class="text-sm text-gray-600 mt-2">
+                {{ texts[currentIndex].blockTwo.content }}
+              </p>
+            </div>
+            <img src="@src/assets/icon/check-fill.svg" alt="" />
           </div>
-          <img src="@src/assets/icon/check-fill.svg" alt="" />
         </div>
-      </div>
-    </transition>
+      </transition>
+    </div>
 
     <button
       class="size-20 md:size-48 rounded-full absolute top-1/3 border-2 border-primary-300 -left-10 md:-left-20 text-primary-600 text-2xl md:text-4xl pl-6 md:pl-12 hover:shadow-md"
@@ -91,7 +92,6 @@ import Button from "./Button.vue";
 import Typed from "typed.js";
 import User from "@src/assets/icon/user.svg";
 import BlockChain from "@src/assets/icon/block-chain.svg";
-import CheckFill from "@src/assets/icon/check-fill.svg";
 
 const currentIndex = ref(0);
 const isPopupVisible = ref(true);
@@ -217,6 +217,13 @@ const texts = [
 ];
 const currentText = ref("Compliant");
 
+function scrollToContactUs() {
+  const element = document.getElementById("contact-us");
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
+  }
+}
+
 function toggleText() {
   currentIndex.value = (currentIndex.value + 1) % texts.length;
   currentText.value = texts[currentIndex.value].title;
@@ -258,6 +265,7 @@ onMounted(() => {
     },
   });
 
+  // popup duration 5s
   intervalId = setInterval(toggleText, 5000);
 });
 

@@ -123,7 +123,6 @@ const headerClass = computed(() => {
 
 const refreshPage = () => {
   // window.location.reload();
-  console.log("here");
   router.push({ path: "/" });
 };
 
